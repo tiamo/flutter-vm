@@ -10,7 +10,7 @@ abstract class BaseViewModel extends ChangeNotifier {
   /// - A callback after [BaseViewModel] is constructed.
   /// - The event is called by default every time the
   ///   [BaseViewModel] view dependencies are updated.
-  /// - Set `initOnce` of the `MVVM` builder to `true` to ignore
+  /// - Set `initOnce` of the `ViewModelBuilder` builder to `true` to ignore
   ///   dependencies updates.
   void init() {}
 
