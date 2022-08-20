@@ -4,6 +4,7 @@ abstract class BaseViewModel extends ChangeNotifier {
   /// The context of the view.
   late BuildContext context;
 
+  bool initialised = false;
   bool _disposed = false;
   bool get disposed => _disposed;
 
