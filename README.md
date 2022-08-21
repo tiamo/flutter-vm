@@ -12,7 +12,7 @@ so that the view is not dependent on any specific model platform.
 [![Star on GitHub](https://img.shields.io/github/stars/tiamo/flutter-vm.svg?style=flat&logo=github&colorB=deeppink&label=stars)](https://github.com/tiamo/flutter-vm)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
-![MVVMPattern.png](https://en.wikipedia.org/wiki/File:MVVMPattern.png)
+![MVVM](https://upload.wikimedia.org/wikipedia/commons/8/87/MVVMPattern.png)
 
 ## Getting Started
 * Add this to your pubspec.yaml
