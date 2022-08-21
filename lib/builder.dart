@@ -68,11 +68,9 @@ class _ViewModelBuilderState<T extends BaseViewModel>
   void didChangeDependencies() {
     super.didChangeDependencies();
     _vm.context = context;
-    if (widget.initOnce && !_vm.initialised) {
+    if (!widget.initOnce || !_vm.initialised) {
       _vm.init();
       _vm.initialised = true;
-    } else if (!widget.initOnce) {
-      _vm.init();
     }
   }
 
