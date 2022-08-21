@@ -6,6 +6,7 @@ void main() {
   testWidgets('init view model builder', (tester) async {
     var model = TestViewModel();
     await tester.pumpWidget(MaterialApp(home: TestPage(model: model)));
+
     expect(find.text('test'), findsAtLeastNWidgets(2));
     expect(model.initialised, true);
     expect(model.initCount, 2);
