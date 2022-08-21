@@ -1,12 +1,11 @@
 name: vm
 description: A very simple flutter plugin that implements the `MVVM` pattern.
-
-publish_to: 'vm'
+homepage: 'https://github.com/tiamo/flutter-vm'
 
 version: 1.0.0
 
 environment:
-  sdk: '>=2.17.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
