@@ -7,7 +7,7 @@ of the development of the graphical user interface (the view) – be it via a ma
 GUI code – from the development of the business logic or back-end logic (the model) 
 so that the view is not dependent on any specific model platform.
 
-[![Build Status](https://github.com/tiamo/flutter-vm/actions/workflows/main.yml/badge.svg)](https://github.com/tiamo/flutter-vm)
+[![Build Status](https://github.com/tiamo/flutter-vm/actions/workflows/ci.yml/badge.svg)](https://github.com/tiamo/flutter-vm)
 [![Pub package](https://img.shields.io/pub/v/vm.svg)](https://pub.dartlang.org/packages/vm)
 [![Star on GitHub](https://img.shields.io/github/stars/tiamo/flutter-vm.svg?style=flat&logo=github&colorB=deeppink&label=stars)](https://github.com/tiamo/flutter-vm)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
@@ -29,6 +29,10 @@ so that the view is not dependent on any specific model platform.
   ```
   import 'package:vm/vm.dart';
   ```
+
+## Usage
+
+...
 
 ## Maintainers
 
