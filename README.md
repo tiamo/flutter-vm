@@ -30,9 +30,19 @@ so that the view is not dependent on any specific model platform.
   import 'package:vm/vm.dart';
   ```
 
+## Features
+
+...
+
 ## Usage
 
 ...
+
+* Check out the complete [Example](https://github.com/tiamo/flutter-vm/tree/master/example)
+
+## Changelog
+
+Please have a look in [CHANGELOG](CHANGELOG.md)
 
 ## Maintainers
 
