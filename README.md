@@ -15,6 +15,7 @@ so that the view is not dependent on any specific model platform.
 ![MVVM](https://upload.wikimedia.org/wikipedia/commons/8/87/MVVMPattern.png)
 
 ## Getting Started
+
 * Add this to your pubspec.yaml
   ```
   dependencies:
@@ -28,3 +29,12 @@ so that the view is not dependent on any specific model platform.
   ```
   import 'package:vm/vm.dart';
   ```
+
+## Maintainers
+
+* [Vlad Korniienko](https://github.com/tiamo)
+* [Alex Awaik](https://github.com/awaik)
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
