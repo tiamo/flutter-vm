@@ -1,5 +1,5 @@
-name: viewmod
-description: Simple flutter view model builder
+name: vm
+description: Simple flutter view model
 
 publish_to: 'none'
 
