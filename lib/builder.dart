@@ -8,10 +8,11 @@ class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
     Key? key,
     required this.builder,
     required this.model,
-    this.child,
     this.disposable = true,
     this.initOnce = true,
     this.implicitView = false,
+    this.observer,
+    this.child,
   }) : super(key: key);
 
   /// A builder function for the View widget, it also has access
@@ -20,8 +21,6 @@ class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
 
   /// The view model of the view.
   final T model;
-
-  final Widget? child;
 
   /// To dispose the [model] when the provider is removed from the
   /// widget tree.
@@ -37,21 +36,32 @@ class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
   /// reload widgets under `builder`
   final bool implicitView;
 
+  /// Registers the [observer] as a binding observer. Binding
+  /// observers are notified when various application events occur,
+  /// for example when the system locale changes.
+  final WidgetsBindingObserver? observer;
+
+  /// The [child] contained by the view.
+  final Widget? child;
+
   @override
   State<ViewModelBuilder> createState() => _ViewModelBuilderState<T>();
 }
 
-class _ViewModelBuilderState<T extends BaseViewModel> extends State<ViewModelBuilder<T>> {
+class _ViewModelBuilderState<T extends BaseViewModel>
+    extends State<ViewModelBuilder<T>> {
   late T _vm;
 
   @override
   void initState() {
     super.initState();
     _vm = widget.model;
-    // WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _vm.onAfterBuild();
     });
+    if (widget.observer != null) {
+      WidgetsBinding.instance.addObserver(widget.observer!);
+    }
   }
 
   @override
