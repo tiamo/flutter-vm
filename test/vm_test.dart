@@ -7,14 +7,14 @@ void main() {
     var model = TestViewModel();
     await tester.pumpWidget(MaterialApp(home: TestPage(model: model)));
     expect(find.text('test'), findsAtLeastNWidgets(2));
+    expect(model.initialised, true);
+    expect(model.initCount, 2);
 
     await tester.tap(find.text('change-text'));
     await tester.idle();
     await tester.pump();
 
     expect(find.text('test2'), findsAtLeastNWidgets(2));
-    expect(model.initialised, true);
-    expect(model.initCount, 2);
   });
 }
 

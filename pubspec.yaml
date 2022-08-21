@@ -1,7 +1,7 @@
 name: vm
-description: Simple flutter view model
+description: A very simple flutter plugin that implements the `MVVM` pattern.
 
-publish_to: 'none'
+publish_to: 'vm'
 
 version: 1.0.0
 
@@ -17,5 +17,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
-flutter:
