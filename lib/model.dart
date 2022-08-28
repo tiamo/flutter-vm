@@ -11,11 +11,11 @@ abstract class ViewModel extends ChangeNotifier {
   bool _disposed = false;
   bool get disposed => _disposed;
 
-  /// - A callback after [ViewModel] is constructed.
-  /// - The event is called by default every time the
-  ///   [ViewModel] view dependencies are updated.
-  /// - Set `initOnce` of the `ViewModelBuilder` builder to `true` to ignore
-  ///   dependencies updates.
+  /// A callback after [ViewModel] is constructed.
+  /// The event is called by default every time the
+  /// [ViewModel] view dependencies are updated.
+  /// Set `initOnce` of the `ViewModelBuilder` builder to `true` to ignore
+  /// dependencies updates.
   void init() {}
 
   /// A callback when the `build` method is called.
