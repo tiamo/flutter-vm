@@ -19,7 +19,7 @@ so that the view is not dependent on any specific model platform.
 * Add this to your pubspec.yaml
   ```
   dependencies:
-  vm: ^1.0.0
+  vm: ^1.0.3
   ```
 * Get the package from Pub:
   ```
@@ -39,20 +39,37 @@ so that the view is not dependent on any specific model platform.
 First create a [ViewModel]
 ```dart
 class CounterViewModel extends ViewModel {
-  int value;
+  int value = 0;
+  int progress = 0;
+
   void increment() {
     value++;
+    if (value % 5 == 0) {
+      progress += 1;
+    }
     notifyListeners();
   }
 }
 ```
 
-Next use this model with [ViewModelBuilder]
+Using [CounterViewModel] with [ViewModelBuilder]
 ```dart
 ViewModelBuilder<CounterViewModel>(
   model: CounterViewModel(),
   builder: (context, model, child) {
-    return Text('${model.value}');
+    return Text('Counter: ${model.value}');
+  },
+)
+```
+
+Rebuild only if `progress` is an odd number
+```dart
+ViewModelBuilder<CounterViewModel>(
+  model: counterModel,
+  disposable: false,
+  shouldRebuild: (prev, next) => next.progress & 1 == 1,
+  builder: (context, model, child) {
+    return Text('Progress: ${model.progress}');
   },
 )
 ```
