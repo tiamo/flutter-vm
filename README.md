@@ -36,7 +36,26 @@ so that the view is not dependent on any specific model platform.
 
 ## Usage
 
-...
+First create a [ViewModel]
+```dart
+class CounterViewModel extends ViewModel {
+  int value;
+  void increment() {
+    value++;
+    notifyListeners();
+  }
+}
+```
+
+Next use this model with [ViewModelBuilder]
+```dart
+ViewModelBuilder<CounterViewModel>(
+  model: CounterViewModel(),
+  builder: (context, model, child) {
+    return Text('${model.value}');
+  },
+)
+```
 
 Check out the complete [Example](https://github.com/tiamo/flutter-vm/tree/master/example)
 
