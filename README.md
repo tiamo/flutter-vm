@@ -36,7 +36,7 @@ so that the view is not dependent on any specific model platform.
 
 ## Usage
 
-First create a [ViewModel]
+First create a `ViewModel`
 ```dart
 class CounterViewModel extends ViewModel {
   int value = 0;
@@ -52,7 +52,7 @@ class CounterViewModel extends ViewModel {
 }
 ```
 
-Using [CounterViewModel] with [ViewModelBuilder]
+Using `CounterViewModel` with `ViewModelBuilder`
 ```dart
 ViewModelBuilder<CounterViewModel>(
   model: CounterViewModel(),
