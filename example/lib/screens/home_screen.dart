@@ -1,5 +1,6 @@
 import 'package:example/models/counter_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vm/builder.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,32 +29,44 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            const Text('You have pushed the button this many times:'),
+            ViewModelBuilder<CounterViewModel>(
+              model: _model,
+              builder: (context, model, child) {
+                return Column(
+                  children: [
+                    Text(
+                      '${model.counterVal}',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                );
+              },
             ),
             ViewModelBuilder<CounterViewModel>(
-                model: _model,
-                initOnce: true,
-                builder: (context, model, child) {
-                  return Text(
-                    '${model.counterVal}',
-                    style: Theme.of(context).textTheme.headline4,
-                  );
-                }),
+              model: _model,
+              disposable: false,
+              implicitView: true,
+              builder: (context, model, child) => const _Progress(),
+            ),
           ],
         ),
       ),
-      floatingActionButton: ViewModelBuilder<CounterViewModel>(
-          model: _model,
-          initOnce: true,
-          implicitView: true,
-          builder: (context, model, child) {
-            return FloatingActionButton(
-              onPressed: model.incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            );
-          }), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: FloatingActionButton(
+        onPressed: _model.incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
     );
+  }
+}
+
+class _Progress extends StatelessWidget {
+  const _Progress({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final progress = context.select((CounterViewModel m) => m.progress);
+    return Text('Progress: $progress');
   }
 }

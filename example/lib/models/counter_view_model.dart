@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:vm/model.dart';
 
 class CounterViewModel extends ViewModel implements WidgetsBindingObserver {
+  int progress = 0;
+
   late int _counterVal;
 
   int get counterVal => _counterVal;
@@ -15,6 +17,9 @@ class CounterViewModel extends ViewModel implements WidgetsBindingObserver {
   }
 
   void incrementCounter() {
+    if (counterVal % 5 == 0) {
+      progress += 1;
+    }
     counterVal++;
   }
 
