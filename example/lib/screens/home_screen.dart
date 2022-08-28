@@ -49,6 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
               implicitView: true,
               builder: (context, model, child) => const _Progress(),
             ),
+            ViewModelBuilder<CounterViewModel>(
+              model: _model,
+              disposable: false,
+              shouldRebuild: (prev, next) => next.progress & 1 == 1,
+              builder: (context, model, child) => Text(
+                'Odd progress: ${model.progress}',
+              ),
+            ),
           ],
         ),
       ),
