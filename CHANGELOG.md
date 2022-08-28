@@ -1,3 +1,8 @@
+## [1.0.2] - 2022.08.28
+
+* Added example
+* Readme improved
+
 ## [1.0.1] - 2022.08.27
 
 * Rename `BaseViewMode` to `ViewModel`
