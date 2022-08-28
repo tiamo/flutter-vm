@@ -11,6 +11,7 @@ class ViewModelBuilder<T extends ViewModel> extends StatefulWidget {
     this.disposable = true,
     this.initOnce = true,
     this.implicitView = false,
+    this.shouldRebuild,
     this.child,
   }) : super(key: key);
 
@@ -37,6 +38,10 @@ class ViewModelBuilder<T extends ViewModel> extends StatefulWidget {
 
   /// The [child] contained by the view.
   final Widget? child;
+
+  /// Used by providers to determine whether dependents needs to be updated
+  /// when the value exposed changes
+  final bool Function(T prev, T next)? shouldRebuild;
 
   @override
   State<ViewModelBuilder> createState() => _ViewModelBuilderState<T>();
@@ -73,10 +78,20 @@ class _ViewModelBuilderState<T extends ViewModel>
     _vm.onBuild();
 
     late final Widget child;
-    if (widget.implicitView) {
-      child = widget.builder(context, widget.model, widget.child);
+
+    if (widget.shouldRebuild != null) {
+      child = Selector<T, T>(
+        selector: (_, __) => _vm,
+        shouldRebuild: widget.shouldRebuild,
+        builder: widget.builder,
+        child: widget.child,
+      );
     } else {
-      child = Consumer<T>(builder: widget.builder, child: widget.child);
+      if (widget.implicitView) {
+        child = widget.builder(context, widget.model, widget.child);
+      } else {
+        child = Consumer<T>(builder: widget.builder, child: widget.child);
+      }
     }
 
     if (widget.disposable) {
