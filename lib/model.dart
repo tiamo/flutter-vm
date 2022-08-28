@@ -4,8 +4,10 @@ abstract class ViewModel extends ChangeNotifier {
   /// The context of the view.
   late BuildContext context;
 
+  /// Determine if [ViewModel] has been initialised.
   bool initialised = false;
 
+  /// Determine if [ViewModel] has been disposed.
   bool _disposed = false;
   bool get disposed => _disposed;
 
