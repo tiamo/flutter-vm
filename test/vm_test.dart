@@ -19,7 +19,7 @@ void main() {
   });
 }
 
-class TestViewModel extends BaseViewModel {
+class TestViewModel extends ViewModel {
   String data = "test";
   int initCount = 0;
   int rebuildCount = 0;

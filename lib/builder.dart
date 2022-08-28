@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'model.dart';
 
-class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
+class ViewModelBuilder<T extends ViewModel> extends StatefulWidget {
   const ViewModelBuilder({
     Key? key,
     required this.builder,
@@ -11,7 +11,6 @@ class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
     this.disposable = true,
     this.initOnce = true,
     this.implicitView = false,
-    this.observer,
     this.child,
   }) : super(key: key);
 
@@ -36,11 +35,6 @@ class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
   /// reload widgets under `builder`
   final bool implicitView;
 
-  /// Registers the [observer] as a binding observer. Binding
-  /// observers are notified when various application events occur,
-  /// for example when the system locale changes.
-  final WidgetsBindingObserver? observer;
-
   /// The [child] contained by the view.
   final Widget? child;
 
@@ -48,7 +42,7 @@ class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
   State<ViewModelBuilder> createState() => _ViewModelBuilderState<T>();
 }
 
-class _ViewModelBuilderState<T extends BaseViewModel>
+class _ViewModelBuilderState<T extends ViewModel>
     extends State<ViewModelBuilder<T>> {
   late T _vm;
 
@@ -59,8 +53,8 @@ class _ViewModelBuilderState<T extends BaseViewModel>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _vm.onAfterBuild();
     });
-    if (widget.observer != null) {
-      WidgetsBinding.instance.addObserver(widget.observer!);
+    if (_vm is WidgetsBindingObserver) {
+      WidgetsBinding.instance.addObserver(_vm as WidgetsBindingObserver);
     }
   }
 

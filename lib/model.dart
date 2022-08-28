@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-abstract class BaseViewModel extends ChangeNotifier {
+abstract class ViewModel extends ChangeNotifier {
   /// The context of the view.
   late BuildContext context;
 
@@ -9,9 +9,9 @@ abstract class BaseViewModel extends ChangeNotifier {
   bool _disposed = false;
   bool get disposed => _disposed;
 
-  /// - A callback after [BaseViewModel] is constructed.
+  /// - A callback after [ViewModel] is constructed.
   /// - The event is called by default every time the
-  ///   [BaseViewModel] view dependencies are updated.
+  ///   [ViewModel] view dependencies are updated.
   /// - Set `initOnce` of the `ViewModelBuilder` builder to `true` to ignore
   ///   dependencies updates.
   void init() {}
