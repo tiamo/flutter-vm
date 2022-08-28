@@ -38,7 +38,7 @@ so that the view is not dependent on any specific model platform.
 
 ...
 
-* Check out the complete [Example](https://github.com/tiamo/flutter-vm/tree/master/example)
+Check out the complete [Example](https://github.com/tiamo/flutter-vm/tree/master/example)
 
 ## Changelog
 

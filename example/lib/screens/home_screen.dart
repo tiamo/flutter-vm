@@ -1,5 +1,4 @@
 import 'package:example/models/counter_view_model.dart';
-import 'package:example/observers/app_state_oserver.dart';
 import 'package:flutter/material.dart';
 import 'package:vm/builder.dart';
 
@@ -34,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ViewModelBuilder<CounterViewModel>(
                 model: _model,
-                observer: AppStateObserver(),
                 initOnce: true,
                 builder: (context, model, child) {
                   return Text(
