@@ -62,15 +62,39 @@ ViewModelBuilder<CounterViewModel>(
 )
 ```
 
+Rebuild only if `progress` changed
+```dart
+ViewModelBuilder<CounterViewModel>(
+  model: counterModel,
+  shouldRebuild: (prev, next) => prev.progress != next.progress
+  builder: (context, model, child) => Text('Progress: ${model.progress}'),
+)
+```
+Or using `context.select`
+```dart
+ViewModelBuilder<CounterViewModel>(
+  model: counterModel,
+  builder: (context, model, child) => const _Progress(),
+)
+```
+```dart
+class _Progress extends StatelessWidget {
+  const _Progress({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final progress = context.select((CounterViewModel m) => m.progress);
+    return Text('Progress: $progress');
+  }
+}
+```
+
 Rebuild only if `progress` is an odd number
 ```dart
 ViewModelBuilder<CounterViewModel>(
   model: counterModel,
-  disposable: false,
   shouldRebuild: (prev, next) => next.progress & 1 == 1,
-  builder: (context, model, child) {
-    return Text('Progress: ${model.progress}');
-  },
+  builder: (context, model, child) => Text('Progress: ${model.progress}'),
 )
 ```
 
