@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               disposable: false,
               shouldRebuild: (prev, next) => next.progress & 1 == 1,
               builder: (context, model, child) => Text(
-                'Odd progress: ${model.progress}',
+                'Odd progress: ${model.progress - model.progress ~/ 2}',
               ),
             ),
           ],
