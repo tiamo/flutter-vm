@@ -17,10 +17,10 @@ class CounterViewModel extends ViewModel implements WidgetsBindingObserver {
   }
 
   void incrementCounter() {
+    counterVal++;
     if (counterVal % 5 == 0) {
       progress += 1;
     }
-    counterVal++;
   }
 
   void updateWith({
