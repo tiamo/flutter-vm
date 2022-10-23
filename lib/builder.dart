@@ -103,6 +103,9 @@ class _ViewModelBuilderState<T extends ViewModel>
   @override
   void dispose() {
     _vm.onDispose();
+    if (_vm is WidgetsBindingObserver) {
+      WidgetsBinding.instance.removeObserver(_vm as WidgetsBindingObserver);
+    }
     super.dispose();
   }
 }
