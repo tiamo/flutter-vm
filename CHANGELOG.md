@@ -1,3 +1,8 @@
+## [1.0.4] - 2022.10.23
+
+* Added `WidgetsBinding.instance.removeObserver` on dispose
+* Upgraded `provider` v6.0.4
+
 ## [1.0.3] - 2022.08.28
 
 * Added `shouldRebuild`
