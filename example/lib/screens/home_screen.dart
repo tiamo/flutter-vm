@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       '${model.counterVal}',
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ],
                 );
